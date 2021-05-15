@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzh.mybatis.mapper.TTestMapper">
+
+    <resultMap id="baseMap" type="com.zzh.mybatis.domain.TTest">
+        <result column="id" property="id" jdbcType="DECIMAL"/>
+        <result column="student_name" property="studentName" jdbcType="VARCHAR"/>
+        <result column="class_name" property="className" jdbcType="VARCHAR"/>
+        <result column="course" property="courseStr" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectById" resultMap="baseMap">
+        SELECT
+            id,
+            student_name,
+            class_name,
+            course
+        FROM
+            t_test
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>
